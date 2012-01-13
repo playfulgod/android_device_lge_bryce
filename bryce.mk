@@ -3,17 +3,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/lge/esteem/esteem-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/bryce/$(SUB_MODEL)/bryce-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lge/esteem/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lge/bryce/overlay/$(SUB_MODEL)
 
 
 # Copy files to target...
 PRODUCT_COPY_FILES += \
-      device/lge/esteem/init.bryce.rc:root/init.bryce.rc 
+      device/lge/bryce/init.bryce.rc:root/init.bryce.rc 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lge/esteem/kernel
+	LOCAL_KERNEL := device/lge/bryce/kernels/$(SUB_MODEL)/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -51,57 +51,82 @@ PRODUCT_COPY_FILES += \
 PRODUCT_LOCALES += hdpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_esteem
-PRODUCT_DEVICE := esteem
+PRODUCT_NAME := full_bryce
+PRODUCT_DEVICE := bryce
 
 # Kernel modules
 PRODUCT_COPY_FILES += \
-    vendor/lge/esteem/proprietary/lib/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
-    vendor/lge/esteem/proprietary/lib/modules/cifs.ko:system/lib/modules/cifs.ko \
-    vendor/lge/esteem/proprietary/lib/modules/cls_flow.ko:system/lib/modules/cls_flow.ko \
-    vendor/lge/esteem/proprietary/lib/modules/cpaccess.ko:system/lib/modules/cpaccess.ko \
-    vendor/lge/esteem/proprietary/lib/modules/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/dma_test.ko:system/lib/modules/dma_test.ko \
-    vendor/lge/esteem/proprietary/lib/modules/evbug.ko:system/lib/modules/evobug.ko \
-    vendor/lge/esteem/proprietary/lib/modules/hdmicec.ko:system/lib/modules/hdmicec.ko \
-    vendor/lge/esteem/proprietary/lib/modules/hdmitx.ko:system/lib/modules/hdmitx.ko \
-    vendor/lge/esteem/proprietary/lib/modules/librasdioif.ko:system/lib/modules/librasdioif.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_erasepart.ko:system/lib/modules/mtd_erasepart.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_nandecctest.ko:system/lib/modules/mtd_nandecctest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_oobtest.ko:system/lib/modules/mtd_obbtest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_pagetest.ko:system/lib/modules/mtd_pagetest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_readtest.ko:system/lib/modules/mtd_readtest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_speedtest.ko:system/lib/modules/mtd_speedtest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_stresstest.ko:system/lib/modules/mtd_stresstest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_subpagetest.ko:system/lib/modules/mtd_subpagetest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/mtd_torturetest.ko:system/lib/modules/mtd_torturetest.ko \
-    vendor/lge/esteem/proprietary/lib/modules/oprofile.ko:system/lib/modules/oprofile.ko \
-    vendor/lge/esteem/proprietary/lib/modules/qce.ko:system/lib/modules/qce.ko \
-    vendor/lge/esteem/proprietary/lib/modules/qcedev.ko:system/lib/modules/qcedev.ko \
-    vendor/lge/esteem/proprietary/lib/modules/qcrypto.ko:system/lib/modules/qcrypo.ko \
-    vendor/lge/esteem/proprietary/lib/modules/reset_modem.ko:system/lib/modules/reset_modem.ko \
-    vendor/lge/esteem/proprietary/lib/modules/sch_dsmark.ko:system/lib/modules/sch_dsmark.ko \
-    vendor/lge/esteem/proprietary/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    vendor/lge/esteem/proprietary/lib/modules/tun.ko:system/lib/modules/tun.ko \
-    vendor/lge/esteem/proprietary/lib/modules/wireless.ko:system/lib/modules/wireless.ko
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/cifs.ko:system/lib/modules/cifs.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/cls_flow.ko:system/lib/modules/cls_flow.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/cpaccess.ko:system/lib/modules/cpaccess.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/dma_test.ko:system/lib/modules/dma_test.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/evbug.ko:system/lib/modules/evobug.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/hdmicec.ko:system/lib/modules/hdmicec.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/hdmitx.ko:system/lib/modules/hdmitx.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/librasdioif.ko:system/lib/modules/librasdioif.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_erasepart.ko:system/lib/modules/mtd_erasepart.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_nandecctest.ko:system/lib/modules/mtd_nandecctest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_oobtest.ko:system/lib/modules/mtd_obbtest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_pagetest.ko:system/lib/modules/mtd_pagetest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_readtest.ko:system/lib/modules/mtd_readtest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_speedtest.ko:system/lib/modules/mtd_speedtest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_stresstest.ko:system/lib/modules/mtd_stresstest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_subpagetest.ko:system/lib/modules/mtd_subpagetest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/mtd_torturetest.ko:system/lib/modules/mtd_torturetest.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/oprofile.ko:system/lib/modules/oprofile.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/qce.ko:system/lib/modules/qce.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/qcedev.ko:system/lib/modules/qcedev.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/qcrypto.ko:system/lib/modules/qcrypo.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/reset_modem.ko:system/lib/modules/reset_modem.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/sch_dsmark.ko:system/lib/modules/sch_dsmark.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/tun.ko:system/lib/modules/tun.ko \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/modules/wireless.ko:system/lib/modules/wireless.ko
 
 # HW
 PRODUCT_COPY_FILES += \
-    vendor/lge/esteem/proprietary/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \
-    vendor/lge/esteem/proprietary/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so \
-    vendor/lge/esteem/proprietary/lib/hw/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so 
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/hw/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so 
 
 PRODUCT_COPY_FILES += \
-    vendor/lge/esteem/proprietary/etc/gps.conf:system/etc/gps.conf \
-    vendor/lge/esteem/proprietary/bin/BCM4329B1_002.002.023.0589.0634.hcd:system/bin/bcm4329.hcd \
-    vendor/lge/esteem/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    vendor/lge/esteem/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-    vendor/lge/esteem/proprietary/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    vendor/lge/esteem/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    vendor/lge/esteem/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    vendor/lge/esteem/proprietary/lib/libGLESv1_CM.so:system/lib/libGLESv1_CM.so \
-    vendor/lge/esteem/proprietary/lib/libGLESv2.so:system/lib/libGLESv2.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/etc/gps.conf:system/etc/gps.conf \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/libGLESv1_CM.so:system/lib/libGLESv1_CM.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/libGLESv2.so:system/lib/libGLESv2.so \
 
 # SDCard
 PRODUCT_COPY_FILES += \
-    device/lge/esteem/vold.fstab:system/etc/vol.fstab
+    device/lge/bryce/vold.fstab:system/etc/vold.fstab
+
+# Carrier props
+ifeq ($(SUB_MODEL),VS910)
+    CDMA_GOOGLE_BASE := android-verizon
+    CDMA_CARRIER_ALPHA := Verizon_Wireless
+    CDMA_CARRIER_NUMERIC := 310012
+###  Needs to be verified!!!
+    BLUETOOTH_FIRMWARE := BCM4329B1_002.002.023.0589.0634.hcd
+endif
+
+ifeq ($(SUB_MODEL),MS910)
+    CDMA_GOOGLE_BASE := android-metropcs-us
+    CDMA_CARRIER_ALPHA := MetroPCS
+    CDMA_CARRIER_NUMERIC := 311660
+    BLUETOOTH_FIRMWARE := BCM4329B1_002.002.023.0589.0634.hcd
+endif
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/bin/$(BLUETOOTH_FIRMWARE):system/bin/BCM4329.hcd
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=$(CDMA_GOOGLE_BASE) \
+    ro.cdma.home.operator.alpha=$(CDMA_CARRIER_ALPHA) \
+    ro.cdma.home.operator.numeric=$(CDMA_CARRIER_NUMERIC)
+ 

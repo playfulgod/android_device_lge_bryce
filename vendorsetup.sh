@@ -14,4 +14,9 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_bryce-eng
+add_lunch_combo bryce_MS910-eng
+add_lunch_combo full_bryce_MS910-userdebug
+add_lunch_combo cm_bryce_MS910-userdebug
+add_lunch_combo bryce_VS910-eng
+add_lunch_combo full_bryce_VS910-userdebug
+add_lunch_combo cm_bryce_VS910-userdebug
