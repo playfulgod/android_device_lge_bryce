@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := CM9_LG-$(PRODUCT_MODEL)
+PRODUCT_RELEASE_NAME := LG-$(PRODUCT_MODEL)-ICS
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
@@ -12,7 +12,7 @@ $(call inherit-product, device/lge/bryce/bryce.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := bryce
-PRODUCT_NAME := cm_bryce
+PRODUCT_NAME := cm_bryce_$(SUB_MODEL)
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-$(SUB_MODEL)
 PRODUCT_MANUFACTURER := LGE

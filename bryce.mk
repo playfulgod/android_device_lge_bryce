@@ -25,7 +25,7 @@ $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    gralloc.msm7x30 \
+#    gralloc.msm7x30 \
     overlay.default \
     libOmxCore \
     libOmxVenc \
@@ -99,7 +99,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/libGLESv1_CM.so:system/lib/libGLESv1_CM.so \
-    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/libGLESv2.so:system/lib/libGLESv2.so \
+    vendor/lge/bryce/proprietary/$(SUB_MODEL)/lib/libGLESv2.so:system/lib/libGLESv2.so 
+
+PRODUCT_COPY_FILES += \
+    device/lge/bryce/include/lib/libgenlock.so:system/lib/libgenlock.so 
 
 # SDCard
 PRODUCT_COPY_FILES += \

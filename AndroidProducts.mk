@@ -16,3 +16,5 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/bryce.mk
+    $(LOCAL_DIR)/cm_bryce_MS910.mk \
+    $(LOCAL_DIR)/cm_bryce_VS910.mk \

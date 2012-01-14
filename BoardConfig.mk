@@ -99,12 +99,17 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
 
-BOARD_EGL_CFG := vendor/lge/bryce/proprietary/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/lge/bryce/include/lib/egl/egl.cfg
 
+#qcom
+BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
+
+# Touchscreen
+BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 BOARD_CAMERA_USE_GETBUFFERINFO := true
 
