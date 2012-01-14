@@ -12,7 +12,7 @@ $(call inherit-product, device/lge/bryce/bryce.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := bryce
-PRODUCT_NAME := cm_bryce
+PRODUCT_NAME := cm_bryce_$(SUB_MODEL)
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-$(SUB_MODEL)
 PRODUCT_MANUFACTURER := LGE
